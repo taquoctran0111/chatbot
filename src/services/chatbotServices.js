@@ -77,7 +77,7 @@ let sendGetStarted = () => {
               {
                 type: "postback",
                 title: "Covid 19",
-                payload: "covid19",
+                payload: "COVID19",
               },
               {
                 type: "postback",
@@ -92,4 +92,44 @@ let sendGetStarted = () => {
   };
   return response;
 };
-module.exports = { handleGetStarted: handleGetStarted };
+// https://covid19.mathdro.id/api?fbclid=IwAR1CVGW7kBdyQUhA_PAfcit3sQUg_yOEhc3zPVl1pc5cy3go4XeeP-23CFY
+let getDataNcov = () => {
+  return new Promise((resolve, reject) => {
+    request(
+      {
+        uri: `https://covid19.mathdro.id/api?fbclid=IwAR1CVGW7kBdyQUhA_PAfcit3sQUg_yOEhc3zPVl1pc5cy3go4XeeP-23CFY`,
+        method: "GET",
+      },
+      (err, res, body) => {
+        if (!err) {
+          body = JSON.parse(body);
+          let confirmed = body.confirmed.value;
+          let recovered = body.recovered.value;
+          let deaths = body.deaths.value;
+          let data = `Số ca nhiễm: ${confirmed}
+                      Số ca phục hồi: ${recovered}
+                      Số ca tử vong: ${deaths}`;
+          resolve(data);
+        } else {
+          console.error("Unable to send message:" + err);
+          reject(err);
+        }
+      }
+    );
+  });
+};
+let handleGetDataNcov = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response = await getDataNcov();
+      await callSendAPI(sender_psid, response);
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+module.exports = {
+  handleGetStarted: handleGetStarted,
+  handleGetDataNcov: handleGetDataNcov,
+};
