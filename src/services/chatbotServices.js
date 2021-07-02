@@ -1,5 +1,4 @@
 require("dotenv").config();
-import { response } from "express";
 import request from "request";
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
@@ -32,7 +31,7 @@ let handleGetStarted = () => {
   return Promise(async (resolve, reject) => {
     try {
       let response = { text: "Hello guys" };
-      await this.callSendAPI(response);
+      await callSendAPI(response);
       resolve("done");
     } catch (e) {
       reject(e);
