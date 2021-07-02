@@ -182,10 +182,56 @@ let setupProfile = async (req, res) => {
   );
   return res.send("setup success!");
 };
+let setPersistentMenu = async (req, res) => {
+  let request_body = {
+    persistent_menu: [
+      {
+        locale: "default",
+        composer_input_disabled: false,
+        call_to_actions: [
+          {
+            type: "postback",
+            title: "Restarted bot",
+            payload: "RESTART_BOT",
+          },
+          {
+            type: "postback",
+            title: "Outfit suggestions",
+            payload: "CURATION",
+          },
+          {
+            type: "web_url",
+            title: "Shop now",
+            url: "https://www.originalcoastclothing.com/",
+            webview_height_ratio: "full",
+          },
+        ],
+      },
+    ],
+  };
 
+  // Send the HTTP request to the Messenger Platform
+  await request(
+    {
+      uri: `https://graph.facebook.com/v11.0/me/custom_user_settings?access_token=${PAGE_ACCESS_TOKEN}`,
+      qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+      method: "POST",
+      json: request_body,
+    },
+    (err, res, body) => {
+      if (!err) {
+        console.log("setup persistent success!");
+      } else {
+        console.error("Unable to send message:" + err);
+      }
+    }
+  );
+  return res.send("setup persistent success!");
+};
 module.exports = {
   getHomePage: getHomePage,
   getWebhook: getWebhook,
   postWebhook: postWebhook,
   setupProfile: setupProfile,
+  setPersistentMenu: setPersistentMenu,
 };

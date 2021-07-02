@@ -70,19 +70,19 @@ let sendGetStarted = () => {
         template_type: "generic",
         elements: [
           {
-            title: "Is this the right picture?",
-            subtitle: "Tap a button to answer.",
+            title: "Các chức năng của chatbot",
+            subtitle: "Chạm vào nút để trả lời",
             image_url: IMAGE_GETSTARTED,
             buttons: [
               {
                 type: "postback",
-                title: "Yes!",
-                payload: "yes",
+                title: "Covid 19",
+                payload: "covid19",
               },
               {
                 type: "postback",
-                title: "No!",
-                payload: "no",
+                title: "Nhiệt độ",
+                payload: "temperature",
               },
             ],
           },
