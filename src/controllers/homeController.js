@@ -135,14 +135,14 @@ function callSendAPI(sender_psid, response) {
     }
   );
 }
-let setupProfile = (req, res) => {
+let setupProfile = async (req, res) => {
   let request_body = {
     get_started: { payload: "GET_STARTED" },
     whitelisted_domains: ["https://chatbotbytqt.herokuapp.com/"],
   };
 
   // Send the HTTP request to the Messenger Platform
-  request(
+  await request(
     {
       uri: `https://graph.facebook.com/v11.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`,
       qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
@@ -157,6 +157,7 @@ let setupProfile = (req, res) => {
       }
     }
   );
+  return res.send("setup success!");
 };
 
 module.exports = {
