@@ -121,7 +121,7 @@ let getDataNcov = () => {
 let handleGetDataNcov = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let response = await getDataNcov();
+      let response = getDataNcov();
       console.log("DATA NCOV", response);
       await callSendAPI(sender_psid, response);
       resolve("done");
