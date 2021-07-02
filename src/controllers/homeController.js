@@ -47,8 +47,10 @@ let postWebhook = (req, res) => {
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
+        handleUserAction(sender_psid);
         handleMessage(sender_psid, webhook_event.message);
       } else if (webhook_event.postback) {
+        handleUserAction(sender_psid);
         handlePostback(sender_psid, webhook_event.postback);
       }
     });
@@ -199,7 +201,7 @@ let setPersistentMenu = async (req, res) => {
           },
           {
             type: "web_url",
-            title: "Facebook developer",
+            title: "Facebook Developer",
             url: "https://www.facebook.com/tranta0111/",
             webview_height_ratio: "full",
           },
@@ -226,10 +228,38 @@ let setPersistentMenu = async (req, res) => {
   );
   return res.send("setup persistent success!");
 };
+
+async function handleUserAction(sender_psid) {
+  let request_body = {
+    recipient: {
+      id: sender_psid,
+    },
+    sender_action: "typing_on",
+  };
+
+  // Send the HTTP request to the Messenger Platform
+  await request(
+    {
+      uri: `https://graph.facebook.com/v2.6/me/messages?access_token=${PAGE_ACCESS_TOKEN}`,
+      qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+      method: "POST",
+      json: request_body,
+    },
+    (err, res, body) => {
+      if (!err) {
+        console.log("setup user action success!");
+      } else {
+        console.error("Unable to send message:" + err);
+      }
+    }
+  );
+  return res.send("setup user action success!");
+}
 module.exports = {
   getHomePage: getHomePage,
   getWebhook: getWebhook,
   postWebhook: postWebhook,
   setupProfile: setupProfile,
   setPersistentMenu: setPersistentMenu,
+  handleUserAction: handleUserAction,
 };
