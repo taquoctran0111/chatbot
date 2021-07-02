@@ -123,7 +123,7 @@ let handleGetDataNcov = (sender_psid) => {
     try {
       let response = await getDataNcov();
       console.log("DATA NCOV", response);
-      await callSendAPI(sender_psid, response);
+      callSendAPI(sender_psid, response);
       resolve("done");
     } catch (e) {
       reject(e);
