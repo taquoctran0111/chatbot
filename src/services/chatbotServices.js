@@ -1,7 +1,8 @@
 require("dotenv").config();
 import request from "request";
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-
+const IMAGE_GETSTARTED =
+  "https://static.vecteezy.com/system/resources/previews/001/436/006/original/cute-cartoon-cat-eating-fish-free-vector.jpg";
 function callSendAPI(sender_psid, response) {
   let request_body = {
     recipient: {
@@ -37,7 +38,6 @@ let getUsername = (sender_psid, response) => {
       (err, res, body) => {
         if (!err) {
           body = JSON.parse(body);
-          console.log(body);
           let username = `${body.name}`;
           resolve(username);
         } else {
@@ -47,36 +47,49 @@ let getUsername = (sender_psid, response) => {
       }
     );
   });
-  // Send the HTTP request to the Messenger Platform
-  //   let username = "";
-  //   request(
-  //     {
-  //       uri: `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${PAGE_ACCESS_TOKEN}`,
-  //       qs: { access_token: PAGE_ACCESS_TOKEN },
-  //       method: "GET",
-  //     },
-  //     (err, res, body) => {
-  //       if (!err) {
-  //         response = JSON.parse(res);
-  //         username = `${response.first_name} ${response.last_name}`;
-  //       } else {
-  //         console.error("Unable to send message:" + err);
-  //       }
-  //     }
-  //   );
-  //   return username;
 };
 let handleGetStarted = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       let username = await getUsername(sender_psid);
-      let response = { text: `Xin chào ${username}!` };
-      await callSendAPI(sender_psid, response);
+      let response1 = { text: `Xin chào ${username}!` };
+      let response2 = sendGetStarted();
+      await callSendAPI(sender_psid, response1);
+      await callSendAPI(sender_psid, response2);
       resolve("done");
     } catch (e) {
       reject(e);
     }
   });
 };
-
+let sendGetStarted = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "generic",
+        elements: [
+          {
+            title: "Is this the right picture?",
+            subtitle: "Tap a button to answer.",
+            image_url: IMAGE_GETSTARTED,
+            buttons: [
+              {
+                type: "postback",
+                title: "Yes!",
+                payload: "yes",
+              },
+              {
+                type: "postback",
+                title: "No!",
+                payload: "no",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  };
+  return response;
+};
 module.exports = { handleGetStarted: handleGetStarted };
