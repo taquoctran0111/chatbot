@@ -107,8 +107,8 @@ let getDataNcov = () => {
           let recovered = body.recovered.value;
           let deaths = body.deaths.value;
           let data = `Số ca nhiễm: ${confirmed}
-          Số ca phục hồi: ${recovered}
-          Số ca tử vong: ${deaths}`;
+Số ca phục hồi: ${recovered} 
+Số ca tử vong: ${deaths}`;
           resolve(data);
         } else {
           console.error("Unable to send message:" + err);
@@ -122,7 +122,7 @@ let handleGetDataNcov = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       let data = await getDataNcov();
-      let response = { text: `${data}` };
+      let response = { text: data };
       callSendAPI(sender_psid, response);
       resolve("done");
     } catch (e) {
