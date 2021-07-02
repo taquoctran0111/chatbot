@@ -194,18 +194,13 @@ let setPersistentMenu = async (req, res) => {
         call_to_actions: [
           {
             type: "postback",
-            title: "Restarted bot",
+            title: "Restart Chatbot",
             payload: "RESTART_BOT",
           },
           {
-            type: "postback",
-            title: "Outfit suggestions",
-            payload: "CURATION",
-          },
-          {
             type: "web_url",
-            title: "Shop now",
-            url: "https://www.originalcoastclothing.com/",
+            title: "Facebook developer",
+            url: "https://www.facebook.com/tranta0111/",
             webview_height_ratio: "full",
           },
         ],
