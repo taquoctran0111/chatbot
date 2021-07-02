@@ -232,7 +232,7 @@ let setPersistentMenu = async (req, res) => {
   return res.send("setup persistent success!");
 };
 
-async function handleUserAction(sender_psid, res) {
+let handleUserAction = async (sender_psid, res) => {
   let request_body = {
     recipient: {
       id: sender_psid,
@@ -257,7 +257,7 @@ async function handleUserAction(sender_psid, res) {
     }
   );
   return res.send("setup user action success!");
-}
+};
 module.exports = {
   getHomePage: getHomePage,
   getWebhook: getWebhook,
