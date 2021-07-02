@@ -103,13 +103,13 @@ let getDataNcov = () => {
       (err, res, body) => {
         if (!err) {
           body = JSON.parse(body);
-          console.log(body);
           let confirmed = body.confirmed.value;
           let recovered = body.recovered.value;
           let deaths = body.deaths.value;
           let data = `Số ca nhiễm: ${confirmed}
                       Số ca phục hồi: ${recovered}
                       Số ca tử vong: ${deaths}`;
+          console.log("DATA", data);
           resolve(data);
         } else {
           console.error("Unable to send message:" + err);
