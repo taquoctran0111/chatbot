@@ -118,7 +118,7 @@ let getDataNcov = () => {
     );
   });
 };
-let handleGetDataNcov = () => {
+let handleGetDataNcov = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       let response = await getDataNcov();

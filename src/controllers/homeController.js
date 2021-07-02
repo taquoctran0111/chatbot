@@ -130,7 +130,7 @@ async function handlePostback(sender_psid, received_postback) {
       await chatbotServices.handleGetStarted(sender_psid);
       break;
     case "COVID19":
-      await chatbotServices.handleGetDataNcov();
+      await chatbotServices.handleGetDataNcov(sender_psid);
       break;
     default:
       response = { text: "I don't understand!" };
