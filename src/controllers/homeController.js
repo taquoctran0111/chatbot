@@ -138,7 +138,7 @@ function callSendAPI(sender_psid, response) {
 let setupProfile = (req, res) => {
   let request_body = {
     get_started: { payload: "GET_STARTED" },
-    whitelisted_domains: "https://chatbotbytqt.herokuapp.com/",
+    whitelisted_domains: ["https://chatbotbytqt.herokuapp.com/"],
   };
 
   // Send the HTTP request to the Messenger Platform
