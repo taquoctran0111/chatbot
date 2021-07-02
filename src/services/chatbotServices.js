@@ -92,7 +92,7 @@ let sendGetStarted = () => {
   };
   return response;
 };
-// https://covid19.mathdro.id/api?fbclid=IwAR1CVGW7kBdyQUhA_PAfcit3sQUg_yOEhc3zPVl1pc5cy3go4XeeP-23CFY
+
 let getDataNcov = () => {
   return new Promise((resolve, reject) => {
     request(
@@ -103,6 +103,7 @@ let getDataNcov = () => {
       (err, res, body) => {
         if (!err) {
           body = JSON.parse(body);
+          console.log(body);
           let confirmed = body.confirmed.value;
           let recovered = body.recovered.value;
           let deaths = body.deaths.value;
