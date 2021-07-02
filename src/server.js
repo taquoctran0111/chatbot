@@ -1,19 +1,28 @@
 import express from "express";
-import bodyParser from "body-parser";
 import viewEngine from "./configs/viewEngine";
-import webRoutes from "./routes/web";
+import initWebRoutes from "./routes/web";
+import bodyParser from "body-parser";
 require("dotenv").config();
 
 let app = express();
 
+//config view engine
 viewEngine(app);
 
-webRoutes(app);
-
+//parse request to json
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+
+//init web routes
+
+initWebRoutes(app);
 
 let port = process.env.PORT || 8080;
+
 app.listen(port, () => {
-  console.log("App is running at the port: " + port);
+  console.log("Chatbot is running on port " + port);
 });
