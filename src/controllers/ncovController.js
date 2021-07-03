@@ -28,18 +28,23 @@ function callSendAPI(sender_psid, response) {
     }
   );
 }
-let getUsername = (sender_psid, response) => {
+let getDataNcov = () => {
   return new Promise((resolve, reject) => {
     request(
       {
-        uri: `https://graph.facebook.com/${sender_psid}?fields=name,profile_pic&access_token=${PAGE_ACCESS_TOKEN}`,
+        uri: `https://covid19.mathdro.id/api?fbclid=IwAR1CVGW7kBdyQUhA_PAfcit3sQUg_yOEhc3zPVl1pc5cy3go4XeeP-23CFY`,
         method: "GET",
       },
       (err, res, body) => {
         if (!err) {
           body = JSON.parse(body);
-          let username = `${body.name}`;
-          resolve(username);
+          let confirmed = body.confirmed.value;
+          let recovered = body.recovered.value;
+          let deaths = body.deaths.value;
+          let data = `Số ca nhiễm: ${confirmed}
+  Số ca phục hồi: ${recovered}     
+  Số ca tử vong: ${deaths}`;
+          resolve(data);
         } else {
           console.error("Unable to send message:" + err);
           reject(err);
@@ -48,50 +53,19 @@ let getUsername = (sender_psid, response) => {
     );
   });
 };
-let handleGetStarted = (sender_psid) => {
+let handleGetDataNcov = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let username = await getUsername(sender_psid);
-      let response1 = { text: `Xin chào ${username}!` };
-      let response2 = sendGetStarted();
-      await callSendAPI(sender_psid, response1);
-      await callSendAPI(sender_psid, response2);
+      let data = await getDataNcov();
+      let response = { text: data };
+      callSendAPI(sender_psid, response);
       resolve("done");
     } catch (e) {
       reject(e);
     }
   });
 };
-let sendGetStarted = () => {
-  let response = {
-    attachment: {
-      type: "template",
-      payload: {
-        template_type: "generic",
-        elements: [
-          {
-            title: "Các chức năng của chatbot",
-            subtitle: "Chạm vào nút để trả lời",
-            image_url: IMAGE_GETSTARTED,
-            buttons: [
-              {
-                type: "postback",
-                title: "Covid 19",
-                payload: "COVID19",
-              },
-              {
-                type: "postback",
-                title: "Nhiệt độ",
-                payload: "temperature",
-              },
-            ],
-          },
-        ],
-      },
-    },
-  };
-  return response;
-};
+
 module.exports = {
-  handleGetStarted: handleGetStarted,
+  handleGetDataNcov: handleGetDataNcov,
 };
