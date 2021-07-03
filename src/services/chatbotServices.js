@@ -106,9 +106,7 @@ let getDataNcov = () => {
           let confirmed = body.confirmed.value;
           let recovered = body.recovered.value;
           let deaths = body.deaths.value;
-          let data = `Số ca nhiễm: ${confirmed}
-Số ca phục hồi: ${recovered}     
-Số ca tử vong: ${deaths}`;
+          let data = `Số ca nhiễm: ${confirmed}Số ca phục hồi: ${recovered}Số ca tử vong: ${deaths}`;
           resolve(data);
         } else {
           console.error("Unable to send message:" + err);
