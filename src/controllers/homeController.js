@@ -134,10 +134,10 @@ async function handlePostback(sender_psid, received_postback) {
       response = localeNcov();
       break;
     case "GLOBAL":
-      await ncovController.handleGetDataNcovGlobal();
+      await ncovController.handleGetDataNcovGlobal(sender_psid);
       break;
     case "VIETNAM":
-      await ncovController.handleGetDataNcovVietNam();
+      await ncovController.handleGetDataNcovVietNam(sender_psid);
       break;
     default:
       response = { text: "I don't understand!" };
