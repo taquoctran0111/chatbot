@@ -30,30 +30,28 @@ function callSendAPI(sender_psid, response) {
   );
 }
 let localeNcov = () => {
-  let res = {
-    response = {
-        attachment: {
-          type: "template",
-          payload: {
-            template_type: "button",
-            text: "What do you want to do next?",
-            buttons: [
-              {
-                type: "postback",
-                title: "Việt Nam",
-                payload: "vietnam",
-              },
-              {
-                type: "postback",
-                title: "Thế giới",
-                payload: "global",
-              },
-            ],
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "button",
+        text: "What do you want to do next?",
+        buttons: [
+          {
+            type: "postback",
+            title: "Việt Nam",
+            payload: "vietnam",
           },
-        },
-      }
+          {
+            type: "postback",
+            title: "Thế giới",
+            payload: "global",
+          },
+        ],
+      },
+    },
   };
-  return res;
+  return response;
 };
 let getDataNcov = () => {
   return new Promise((resolve, reject) => {

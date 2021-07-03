@@ -131,7 +131,7 @@ async function handlePostback(sender_psid, received_postback) {
       await chatbotServices.handleGetStarted(sender_psid);
       break;
     case "COVID19":
-      await ncovController.localeNcov();
+      respone = ncovController.localeNcov();
       break;
     default:
       response = { text: "I don't understand!" };
