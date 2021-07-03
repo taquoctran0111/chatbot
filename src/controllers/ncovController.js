@@ -40,7 +40,9 @@ let getDataNcovGlobal = () => {
       (err, res, body) => {
         if (!err) {
           body = JSON.parse(body);
+
           let global = body.Global;
+          console.log("DATA nCOV: ", global);
           let newconfirmed = global.NewConfirmed;
           let totalconfirmed = global.TotalConfirmed;
           let newdeaths = global.NewDeaths;
