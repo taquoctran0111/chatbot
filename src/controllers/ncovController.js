@@ -42,7 +42,6 @@ let getDataNcovGlobal = () => {
           body = JSON.parse(body);
 
           let global = body.Global;
-          console.log("DATA nCOV: ", global);
           let newconfirmed = global.NewConfirmed;
           let totalconfirmed = global.TotalConfirmed;
           let newdeaths = global.NewDeaths;
@@ -57,7 +56,6 @@ Tổng số ca tử vong: ${totaldeaths}
 Số ca được chữa khỏi mới: ${newrecovered}
 Tổng số ca được chữa khỏi: ${totalrecovered}
 Ngày cập nhật: ${date}`;
-          console.log("DATA nCOV: ", data);
           resolve(data);
         } else {
           console.error("Unable to send message:" + err);
@@ -119,6 +117,7 @@ let handleGetDataNcovVietNam = (sender_psid) => {
     try {
       let data = await getDataNcovVietNam();
       let response = { text: data };
+      console.log("DATAAAAA:", data);
       callSendAPI(sender_psid, response);
       resolve("done");
     } catch (e) {
