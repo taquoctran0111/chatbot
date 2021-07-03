@@ -270,7 +270,7 @@ let localeNcov = () => {
       type: "template",
       payload: {
         template_type: "button",
-        text: "What do you want to do next?",
+        text: "Thông tin Covid19 của:",
         buttons: [
           {
             type: "postback",
