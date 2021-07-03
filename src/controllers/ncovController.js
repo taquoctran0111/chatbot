@@ -55,6 +55,7 @@ Tổng số ca tử vong: ${totaldeaths}
 Số ca được chữa khỏi mới: ${newrecovered}
 Tổng số ca được chữa khỏi: ${totalrecovered}
 Ngày cập nhật: ${date}`;
+          console.log("DATA nCOV: ", data);
           resolve(data);
         } else {
           console.error("Unable to send message:" + err);
