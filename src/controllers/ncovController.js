@@ -1,4 +1,5 @@
 require("dotenv").config();
+import { response } from "express";
 import request from "request";
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const IMAGE_GETSTARTED =
@@ -28,6 +29,30 @@ function callSendAPI(sender_psid, response) {
     }
   );
 }
+let localeNcov = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "button",
+        text: "What do you want to do next?",
+        buttons: [
+          {
+            type: "postback",
+            title: "Việt Nam",
+            payload: "vietnam",
+          },
+          {
+            type: "postback",
+            title: "Thế giới",
+            payload: "global",
+          },
+        ],
+      },
+    },
+  };
+  return response;
+};
 let getDataNcov = () => {
   return new Promise((resolve, reject) => {
     request(
@@ -42,8 +67,8 @@ let getDataNcov = () => {
           let recovered = body.recovered.value;
           let deaths = body.deaths.value;
           let data = `Số ca nhiễm: ${confirmed}
-  Số ca phục hồi: ${recovered}     
-  Số ca tử vong: ${deaths}`;
+Số ca phục hồi: ${recovered}     
+Số ca tử vong: ${deaths}`;
           resolve(data);
         } else {
           console.error("Unable to send message:" + err);
