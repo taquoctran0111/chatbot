@@ -30,22 +30,31 @@ function callSendAPI(sender_psid, response) {
   );
 }
 
-let getDataNcov = () => {
+let getDataNcovGlobal = () => {
   return new Promise((resolve, reject) => {
     request(
       {
-        uri: `https://covid19.mathdro.id/api?fbclid=IwAR1CVGW7kBdyQUhA_PAfcit3sQUg_yOEhc3zPVl1pc5cy3go4XeeP-23CFY`,
+        uri: `https://api.covid19api.com/summary`,
         method: "GET",
       },
       (err, res, body) => {
         if (!err) {
           body = JSON.parse(body);
-          let confirmed = body.confirmed.value;
-          let recovered = body.recovered.value;
-          let deaths = body.deaths.value;
-          let data = `Số ca nhiễm: ${confirmed}
-Số ca phục hồi: ${recovered}     
-Số ca tử vong: ${deaths}`;
+          let global = body.Global;
+          let newconfirmed = global.NewConfirmed;
+          let totalconfirmed = global.TotalConfirmed;
+          let newdeaths = global.NewDeaths;
+          let totaldeaths = global.TotalDeaths;
+          let newrecovered = global.NewRecovered;
+          let totalrecovered = global.TotalRecovered;
+          let date = global.Date;
+          let data = `Số ca nhiễm mới: ${newconfirmed}
+Tổng số ca nhiễm: ${totalconfirmed}
+Số ca tử vong mới: ${newdeaths}
+Tổng số ca tử vong: ${totaldeaths}
+Số ca được chữa khỏi mới: ${newrecovered}
+Tổng số ca được chữa khỏi: ${totalrecovered}
+Ngày cập nhật: ${date}`;
           resolve(data);
         } else {
           console.error("Unable to send message:" + err);
@@ -55,10 +64,10 @@ Số ca tử vong: ${deaths}`;
     );
   });
 };
-let handleGetDataNcov = (sender_psid) => {
+let handleGetDataNcovVietNam = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let data = await getDataNcov();
+      let data = await getDataNcovGlobal();
       let response = { text: data };
       callSendAPI(sender_psid, response);
       resolve("done");
@@ -68,6 +77,53 @@ let handleGetDataNcov = (sender_psid) => {
   });
 };
 
+let getDataNcovVietNam = () => {
+  return new Promise((resolve, reject) => {
+    request(
+      {
+        uri: `https://api.covid19api.com/summary`,
+        method: "GET",
+      },
+      (err, res, body) => {
+        if (!err) {
+          body = JSON.parse(body);
+          let locale = body.Countries[0];
+          let newconfirmed = locale.NewConfirmed;
+          let totalconfirmed = locale.TotalConfirmed;
+          let newdeaths = locale.NewDeaths;
+          let totaldeaths = locale.TotalDeaths;
+          let newrecovered = locale.NewRecovered;
+          let totalrecovered = locale.TotalRecovered;
+          let date = locale.Date;
+          let data = `Số ca nhiễm mới: ${newconfirmed}
+Tổng số ca nhiễm: ${totalconfirmed}
+Số ca tử vong mới: ${newdeaths}
+Tổng số ca tử vong: ${totaldeaths}
+Số ca được chữa khỏi mới: ${newrecovered}
+Tổng số ca được chữa khỏi: ${totalrecovered}
+Ngày cập nhật: ${date}`;
+          resolve(data);
+        } else {
+          console.error("Unable to send message:" + err);
+          reject(err);
+        }
+      }
+    );
+  });
+};
+let handleGetDataNcovVietNam = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await getDataNcovVietNam();
+      let response = { text: data };
+      callSendAPI(sender_psid, response);
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
-  handleGetDataNcov: handleGetDataNcov,
+  handleGetDataNcovGlobal: handleGetDataNcovGlobal,
+  handleGetDataNcovVietNam: handleGetDataNcovVietNam,
 };
