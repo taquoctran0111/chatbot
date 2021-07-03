@@ -64,7 +64,7 @@ Ngày cập nhật: ${date}`;
     );
   });
 };
-let handleGetDataNcovVietNam = (sender_psid) => {
+let handleGetDataNcovGlobal = (sender_psid) => {
   return new Promise(async (resolve, reject) => {
     try {
       let data = await getDataNcovGlobal();
