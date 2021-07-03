@@ -88,7 +88,7 @@ let getDataNcovVietNam = () => {
       (err, res, body) => {
         if (!err) {
           body = JSON.parse(body);
-          let locale = body.Countries[193];
+          let locale = body.Countries[-4];
           let newconfirmed = locale.NewConfirmed;
           let totalconfirmed = locale.TotalConfirmed;
           let newdeaths = locale.NewDeaths;
