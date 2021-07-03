@@ -93,4 +93,5 @@ let handleGetDataNcov = (sender_psid) => {
 
 module.exports = {
   handleGetDataNcov: handleGetDataNcov,
+  localeNcov: localeNcov,
 };
