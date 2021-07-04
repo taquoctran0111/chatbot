@@ -125,7 +125,32 @@ let handleGetDataNcovVietNam = (sender_psid) => {
     }
   });
 };
+let localeNcov = () => {
+  let response = {
+    attachment: {
+      type: "template",
+      payload: {
+        template_type: "button",
+        text: "Thông tin Covid19 của:",
+        buttons: [
+          {
+            type: "postback",
+            title: "Việt Nam",
+            payload: "VIETNAM",
+          },
+          {
+            type: "postback",
+            title: "Thế giới",
+            payload: "GLOBAL",
+          },
+        ],
+      },
+    },
+  };
+  return response;
+};
 module.exports = {
   handleGetDataNcovGlobal: handleGetDataNcovGlobal,
   handleGetDataNcovVietNam: handleGetDataNcovVietNam,
+  localeNcov: localeNcov,
 };
