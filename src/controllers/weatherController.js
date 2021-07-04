@@ -51,7 +51,7 @@ let getDataWeather = (city) => {
             let temp_max = parseInt(main.temp_max) - 273;
             let temp_min = parseInt(main.temp_min) - 273;
             let humidity = main.humidity;
-            let windspeed = (wind.speed * 3.6).toFixed(3);
+            let windspeed = (wind.speed * 3.6).toFixed(2);
             let data = `Nhiệt độ: ${temp}°C
 Cảm giác như: ${feels_like}°C
 Nhiệt độ thấp nhất: ${temp_min}°C
