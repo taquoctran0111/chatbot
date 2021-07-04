@@ -31,183 +31,180 @@ function callSendAPI(sender_psid, response) {
     }
   );
 }
-// let zodiacList = (sender_psid) => {
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       let response1 = { text: `Xin chào ${username}!` };
-//       let response2 = sendGetStarted();
-//       await callSendAPI(sender_psid, response1);
-//       await callSendAPI(sender_psid, response2);
-//       resolve("done");
-//     } catch (e) {
-//       reject(e);
-//     }
-//   });
-// };
-let zodiacList = () => {
-  let response = {
-    attachment: {
-      type: "template",
-      payload: {
-        template_type: "generic",
-        elements: [
-          {
-            title: "Cung Ma Kết",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: MAKET,
-            buttons: [
+let zodiacList = (sender_psid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response1 = {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [
               {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
+                title: "Cung Ma Kết",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: MAKET,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
+              },
+              {
+                title: "Cung Bảo Bình",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: BAOBINH,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
+              },
+              {
+                title: "Cung Song Ngư",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: SONGNGU,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
+              },
+              {
+                title: "Cung Song Ngư",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: SONGNGU,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
+              },
+              {
+                title: "Cung Song Ngư",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: SONGNGU,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
+              },
+              {
+                title: "Cung Song Ngư",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: SONGNGU,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
               },
             ],
           },
-          {
-            title: "Cung Bảo Bình",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: BAOBINH,
-            buttons: [
+        },
+      };
+      let response2 = {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [
               {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
+                title: "Cung Ma Kết",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: MAKET,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
+              },
+              {
+                title: "Cung Bảo Bình",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: BAOBINH,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
+              },
+              {
+                title: "Cung Song Ngư",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: SONGNGU,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
+              },
+              {
+                title: "Cung Song Ngư",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: SONGNGU,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
+              },
+              {
+                title: "Cung Song Ngư",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: SONGNGU,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
+              },
+              {
+                title: "Cung Song Ngư",
+                subtitle: "Từ ngày 22/12 - 19/1",
+                image_url: SONGNGU,
+                buttons: [
+                  {
+                    type: "postback",
+                    title: "Xem thông tin",
+                    payload: "ZODIACINFO",
+                  },
+                ],
               },
             ],
           },
-          {
-            title: "Cung Song Ngư",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: SONGNGU,
-            buttons: [
-              {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
-              },
-            ],
-          },
-          {
-            title: "Cung Song Ngư",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: SONGNGU,
-            buttons: [
-              {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
-              },
-            ],
-          },
-          {
-            title: "Cung Song Ngư",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: SONGNGU,
-            buttons: [
-              {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
-              },
-            ],
-          },
-          {
-            title: "Cung Song Ngư",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: SONGNGU,
-            buttons: [
-              {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
-              },
-            ],
-          },
-        ],
-      },
-    },
-    attachment: {
-      type: "template",
-      payload: {
-        template_type: "generic",
-        elements: [
-          {
-            title: "Cung Ma Kết",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: MAKET,
-            buttons: [
-              {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
-              },
-            ],
-          },
-          {
-            title: "Cung Bảo Bình",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: BAOBINH,
-            buttons: [
-              {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
-              },
-            ],
-          },
-          {
-            title: "Cung Song Ngư",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: SONGNGU,
-            buttons: [
-              {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
-              },
-            ],
-          },
-          {
-            title: "Cung Song Ngư",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: SONGNGU,
-            buttons: [
-              {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
-              },
-            ],
-          },
-          {
-            title: "Cung Song Ngư",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: SONGNGU,
-            buttons: [
-              {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
-              },
-            ],
-          },
-          {
-            title: "Cung Song Ngư",
-            subtitle: "Từ ngày 22/12 - 19/1",
-            image_url: SONGNGU,
-            buttons: [
-              {
-                type: "postback",
-                title: "Xem thông tin",
-                payload: "ZODIACINFO",
-              },
-            ],
-          },
-        ],
-      },
-    },
-  };
-  return response;
+        },
+      };
+      await callSendAPI(sender_psid, response1);
+      await callSendAPI(sender_psid, response2);
+      resolve("done");
+    } catch (e) {
+      reject(e);
+    }
+  });
 };
 
 module.exports = {
