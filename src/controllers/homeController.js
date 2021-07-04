@@ -50,6 +50,15 @@ let postWebhook = (req, res) => {
             sender_psid,
             webhook_event.postback
           );
+        } else if (
+          payload == "COVID19" ||
+          payload == "GLOBAL" ||
+          payload == "VIETNAM"
+        ) {
+          ncovController.handlePostbackNcov(
+            sender_psid,
+            webhook_event.postback
+          );
         } else {
           zodiacController.handlePostbackZodiac(
             sender_psid,
