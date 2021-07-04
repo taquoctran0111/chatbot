@@ -40,19 +40,27 @@ let getDataWeather = (city) => {
       (err, res, body) => {
         if (!err) {
           body = JSON.parse(body);
-          let main = body.main;
-          let temp = parseInt(main.temp) - 273;
-          let feels_like = parseInt(main.feels_like) - 273;
-          let temp_max = parseInt(main.temp_max) - 273;
-          let temp_min = parseInt(main.temp_min) - 273;
-          let humidity = main.humidity;
-          let data = `Nhiệt độ: ${temp}°C
+          if (body.cod == 404) {
+            let data = "Không tìm thấy thành phố! Vui lòng nhập lại!";
+            resolve(data);
+          } else {
+            let main = body.main;
+            let wind = body.wind;
+            let temp = parseInt(main.temp) - 273;
+            let feels_like = parseInt(main.feels_like) - 273;
+            let temp_max = parseInt(main.temp_max) - 273;
+            let temp_min = parseInt(main.temp_min) - 273;
+            let humidity = main.humidity;
+            let windspeed = wind.speed * 3.6;
+            let data = `Nhiệt độ: ${temp}°C
 Cảm giác như: ${feels_like}°C
-Nhiệt độ thấp nhât: ${temp_min}°C
+Nhiệt độ thấp nhất: ${temp_min}°C
 Nhiệt độ cao nhất: ${temp_max}°C
 Độ ẩm trong không khí: ${humidity}%
+Tốc độ gió: ${windspeed} km/h
 `;
-          resolve(data);
+            resolve(data);
+          }
         } else {
           console.error("Unable to send message:" + err);
           reject(err);
