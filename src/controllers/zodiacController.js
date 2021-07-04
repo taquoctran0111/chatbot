@@ -252,7 +252,7 @@ async function handlePostbackZodiac(sender_psid, received_postback) {
 
   switch (payload) {
     case "ZODIAC":
-      response = zodiacController.zodiacList(sender_psid);
+      response = zodiacList(sender_psid);
       break;
     case "ZODIACINFO1":
       response = { text: INFOMAKET };
