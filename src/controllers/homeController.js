@@ -41,12 +41,21 @@ let postWebhook = (req, res) => {
         handleUserAction(sender_psid);
         handleMessage(sender_psid, webhook_event.message);
       } else if (webhook_event.postback) {
+        let payload = webhook_event.postback.payload;
         handleUserAction(sender_psid);
-        handlePostback(sender_psid, webhook_event.postback);
-        zodiacController.handlePostbackZodiac(
-          sender_psid,
-          webhook_event.postback
-        );
+        if (payload == "GET_STARTED" || payload == "RESTART_BOT") {
+          handlePostback(sender_psid, webhook_event.postback);
+        } else if (payload == "WEATHER") {
+          weatherController.handlePostbackWeather(
+            sender_psid,
+            webhook_event.postback
+          );
+        } else {
+          zodiacController.handlePostbackZodiac(
+            sender_psid,
+            webhook_event.postback
+          );
+        }
       }
     });
     res.status(200).send("EVENT_RECEIVED");
@@ -67,34 +76,11 @@ async function handlePostback(sender_psid, received_postback) {
   let payload = received_postback.payload;
 
   switch (payload) {
-    case "yes":
-      response = { text: "Thanks!" };
-      break;
-    case "no":
-      response = { text: "Oops, try sending another image." };
-      break;
     case "GET_STARTED":
       await chatbotServices.handleGetStarted(sender_psid);
       break;
     case "RESTART_BOT":
       await chatbotServices.handleGetStarted(sender_psid);
-      break;
-    case "COVID19":
-      response = ncovController.localeNcov();
-      break;
-    case "GLOBAL":
-      await ncovController.handleGetDataNcovGlobal(sender_psid);
-      break;
-    case "VIETNAM":
-      await ncovController.handleGetDataNcovVietNam(sender_psid);
-      break;
-    case "WEATHER":
-      response = {
-        text: "Nhập tên thành phố bạn muốn xem thông tin thời tiết",
-      };
-      break;
-    case "ZODIAC":
-      response = zodiacController.zodiacList(sender_psid);
       break;
     default:
       response = { text: "I don't understand!" };

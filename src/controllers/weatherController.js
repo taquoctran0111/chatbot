@@ -82,6 +82,24 @@ let handleGetDataWeather = (sender_psid, cityname) => {
   });
 };
 
+async function handlePostbackWeather(sender_psid, received_postback) {
+  let response;
+  let payload = received_postback.payload;
+
+  switch (payload) {
+    case "WEATHER":
+      response = {
+        text: "Nhập tên thành phố bạn muốn xem thông tin thời tiết",
+      };
+      break;
+    default:
+      response = { text: "I don't understand!" };
+      break;
+  }
+  callSendAPI(sender_psid, response);
+}
+
 module.exports = {
   handleGetDataWeather: handleGetDataWeather,
+  handlePostbackWeather: handlePostbackWeather,
 };

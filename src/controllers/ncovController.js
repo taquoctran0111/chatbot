@@ -148,8 +148,29 @@ let localeNcov = () => {
   };
   return response;
 };
+async function handlePostbackNcov(sender_psid, received_postback) {
+  let response;
+  let payload = received_postback.payload;
+
+  switch (payload) {
+    case "COVID19":
+      response = localeNcov();
+      break;
+    case "GLOBAL":
+      await handleGetDataNcovGlobal(sender_psid);
+      break;
+    case "VIETNAM":
+      await handleGetDataNcovVietNam(sender_psid);
+      break;
+    default:
+      response = { text: "I don't understand!" };
+      break;
+  }
+  callSendAPI(sender_psid, response);
+}
 module.exports = {
   handleGetDataNcovGlobal: handleGetDataNcovGlobal,
   handleGetDataNcovVietNam: handleGetDataNcovVietNam,
   localeNcov: localeNcov,
+  handlePostbackNcov: handlePostbackNcov,
 };
