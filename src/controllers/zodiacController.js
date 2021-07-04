@@ -93,7 +93,7 @@ let zodiacList = (sender_psid) => {
                 ],
               },
               {
-                title: "Cung Song Ngư",
+                title: "Cung Bạch Dương",
                 subtitle: "Từ ngày 21/3 - 19/4",
                 image_url: BACHDUONG,
                 buttons: [
@@ -105,7 +105,7 @@ let zodiacList = (sender_psid) => {
                 ],
               },
               {
-                title: "Cung Song Ngư",
+                title: "Cung Kim Ngưu",
                 subtitle: "Từ ngày 20/4 - 20/5",
                 image_url: KIMNGUU,
                 buttons: [
@@ -117,7 +117,7 @@ let zodiacList = (sender_psid) => {
                 ],
               },
               {
-                title: "Cung Song Ngư",
+                title: "Cung Song Tử",
                 subtitle: "Từ ngày 21/5 - 21/6",
                 image_url: SONGTU,
                 buttons: [
@@ -139,7 +139,7 @@ let zodiacList = (sender_psid) => {
             template_type: "generic",
             elements: [
               {
-                title: "Cung Ma Kết",
+                title: "Cung Cự Giải",
                 subtitle: "Từ ngày 22/6 - 22/7",
                 image_url: CUGIAI,
                 buttons: [
@@ -151,7 +151,7 @@ let zodiacList = (sender_psid) => {
                 ],
               },
               {
-                title: "Cung Bảo Bình",
+                title: "Cung Sư Tử",
                 subtitle: "Từ ngày 23/7 - 23/8",
                 image_url: SUTU,
                 buttons: [
@@ -163,7 +163,7 @@ let zodiacList = (sender_psid) => {
                 ],
               },
               {
-                title: "Cung Song Ngư",
+                title: "Cung Xử Nữ",
                 subtitle: "Từ ngày 24/8 - 22/9",
                 image_url: XUNU,
                 buttons: [
@@ -175,7 +175,7 @@ let zodiacList = (sender_psid) => {
                 ],
               },
               {
-                title: "Cung Song Ngư",
+                title: "Cung Thiên Bình",
                 subtitle: "Từ ngày 23/9 - 22/10",
                 image_url: THIENBINH,
                 buttons: [
@@ -187,7 +187,7 @@ let zodiacList = (sender_psid) => {
                 ],
               },
               {
-                title: "Cung Song Ngư",
+                title: "Cung Bọ Cạp",
                 subtitle: "Từ ngày 23/10 - 21/11",
                 image_url: BOCAP,
                 buttons: [
@@ -199,7 +199,7 @@ let zodiacList = (sender_psid) => {
                 ],
               },
               {
-                title: "Cung Song Ngư",
+                title: "Cung Nhân Mã",
                 subtitle: "Từ ngày 22/11 - 21/12",
                 image_url: NHANMA,
                 buttons: [
