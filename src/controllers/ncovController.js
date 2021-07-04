@@ -117,7 +117,6 @@ let handleGetDataNcovVietNam = (sender_psid) => {
     try {
       let data = await getDataNcovVietNam();
       let response = { text: data };
-      console.log("DATAAAAA:", response);
       callSendAPI(sender_psid, response);
       resolve("done");
     } catch (e) {
