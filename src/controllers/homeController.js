@@ -43,6 +43,10 @@ let postWebhook = (req, res) => {
       } else if (webhook_event.postback) {
         handleUserAction(sender_psid);
         handlePostback(sender_psid, webhook_event.postback);
+        zodiacController.handlePostbackZodiac(
+          sender_psid,
+          webhook_event.postback
+        );
       }
     });
     res.status(200).send("EVENT_RECEIVED");

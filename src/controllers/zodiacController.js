@@ -23,6 +23,9 @@ const BOCAP = "https://st.quantrimang.com/photos/image/2017/11/07/bo-cap-1.jpg";
 const NHANMA =
   "https://st.quantrimang.com/photos/image/2017/11/07/nhan-ma-1.jpg";
 
+const INFOBACHDUONG =
+  "Vốn là người luôn hết mình vì bạn bè và gia đình nên Bạch Dương được rất nhiều người yêu quý. Song họ nổi tiếng là nóng nảy và thẳng thắn nên đôi khi làm cho người khác cảm thấy sốc, bất ngờ. Nhiều lúc chính sự thẳng thắn và nóng nảy này làm cho Bạch Dương vướng phải nhiều rắc rối, tranh cãi.\n Bên cạnh đó, Bạch Dương có khả năng tập trung vào công việc khá cao và tham vọng lớn nên họ tương đối thành công. Không những làm việc chăm chỉ mà Bạch Dương còn chơi hết mình và luôn tạo cảm giác vui vẻ cho mọi người.";
+
 function callSendAPI(sender_psid, response) {
   let request_body = {
     recipient: {
@@ -64,7 +67,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO1",
                   },
                 ],
               },
@@ -76,7 +79,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO2",
                   },
                 ],
               },
@@ -88,7 +91,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO3",
                   },
                 ],
               },
@@ -100,7 +103,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO4",
                   },
                 ],
               },
@@ -112,7 +115,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO5",
                   },
                 ],
               },
@@ -124,7 +127,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO6",
                   },
                 ],
               },
@@ -146,7 +149,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO7",
                   },
                 ],
               },
@@ -158,7 +161,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO8",
                   },
                 ],
               },
@@ -170,7 +173,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO9",
                   },
                 ],
               },
@@ -182,7 +185,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO10",
                   },
                 ],
               },
@@ -194,7 +197,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO11",
                   },
                 ],
               },
@@ -206,7 +209,7 @@ let zodiacList = (sender_psid) => {
                   {
                     type: "postback",
                     title: "Xem thông tin",
-                    payload: "ZODIACINFO",
+                    payload: "ZODIACINFO12",
                   },
                 ],
               },
@@ -222,7 +225,21 @@ let zodiacList = (sender_psid) => {
     }
   });
 };
+async function handlePostbackZodiac(sender_psid, received_postback) {
+  let response;
+  let payload = received_postback.payload;
 
+  switch (payload) {
+    case "ZODIACINFO1":
+      response = { text: INFOBACHDUONG };
+      break;
+    default:
+      response = { text: "I don't understand!" };
+      break;
+  }
+  callSendAPI(sender_psid, response);
+}
 module.exports = {
   zodiacList: zodiacList,
+  handlePostbackZodiac: handlePostbackZodiac,
 };
