@@ -90,7 +90,7 @@ async function handlePostback(sender_psid, received_postback) {
       };
       break;
     case "ZODIAC":
-      response = zodiacController.zodiacList();
+      response = zodiacController.zodiacList(sender_psid);
       break;
     default:
       response = { text: "I don't understand!" };
