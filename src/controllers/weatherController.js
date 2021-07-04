@@ -32,7 +32,7 @@ let getDataWeather = (city) => {
   return new Promise((resolve, reject) => {
     request(
       {
-        uri: `api.openweathermap.org/data/2.5/weather?q=${city}&appid=028e22550cd2e267e1cf9fb8415546c7`,
+        uri: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=028e22550cd2e267e1cf9fb8415546c7`,
         method: "GET",
       },
       (err, res, body) => {
