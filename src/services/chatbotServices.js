@@ -84,6 +84,11 @@ let sendGetStarted = () => {
                 title: "Thời tiết",
                 payload: "WEATHER",
               },
+              {
+                type: "postback",
+                title: "Cung hoàng đạo",
+                payload: "ZODIAC",
+              },
             ],
           },
         ],

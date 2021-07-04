@@ -3,6 +3,7 @@ import request from "request";
 import chatbotServices from "../services/chatbotServices";
 import ncovController from "../controllers/ncovController";
 import weatherController from "../controllers/weatherController";
+import zodiacController from "../controllers/zodiacController";
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 let getHomePage = (req, res) => {
@@ -87,6 +88,9 @@ async function handlePostback(sender_psid, received_postback) {
       response = {
         text: "Nhập tên thành phố bạn muốn xem thông tin thời tiết",
       };
+      break;
+    case "ZODIAC":
+      response = zodiacController.zodiacList();
       break;
     default:
       response = { text: "I don't understand!" };
