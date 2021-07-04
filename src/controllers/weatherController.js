@@ -41,7 +41,7 @@ let getDataWeather = (city) => {
         if (!err) {
           body = JSON.parse(body);
           console.log(body);
-          resolve(data);
+          resolve(body);
         } else {
           console.error("Unable to send message:" + err);
           reject(err);
