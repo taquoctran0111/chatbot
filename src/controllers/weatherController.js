@@ -42,14 +42,14 @@ let getDataWeather = (city) => {
           body = JSON.parse(body);
           let main = body.main;
           let temp = parseInt(main.temp) - 273;
-          let feels_like = main.feels_like;
-          let temp_max = main.temp_max;
-          let temp_min = main.temp_min;
+          let feels_like = parseInt(main.feels_like) - 273;
+          let temp_max = parseInt(main.temp_max) - 273;
+          let temp_min = parseInt(main.temp_min) - 273;
           let humidity = main.humidity;
-          let data = `Nhiệt độ: ${temp}
-Cảm giác như: ${feels_like}
-Nhiệt độ thấp nhât: ${temp_min}
-Nhiệt độ cao nhất: ${temp_max}
+          let data = `Nhiệt độ: ${temp}°C
+Cảm giác như: ${feels_like}°C
+Nhiệt độ thấp nhât: ${temp_min}°C
+Nhiệt độ cao nhất: ${temp_max}°C
 Độ ẩm trong không khí: ${humidity}%
 `;
           resolve(data);
