@@ -40,8 +40,19 @@ let getDataWeather = (city) => {
       (err, res, body) => {
         if (!err) {
           body = JSON.parse(body);
-          console.log(body);
-          resolve(body);
+          let main = body.main;
+          let temp = main.temp;
+          let feels_like = main.feels_like;
+          let temp_max = main.temp_max;
+          let temp_min = main.temp_min;
+          let humidity = main.humidity;
+          let data = `Nhiệt độ: ${temp}
+Cảm giác như: ${feels_like}
+Nhiệt độ thấp nhât: ${temp_min}
+Nhiệt độ cao nhất: ${temp_max}
+Độ ẩm trong không khí: ${humidity}%
+`;
+          resolve(data);
         } else {
           console.error("Unable to send message:" + err);
           reject(err);
