@@ -41,7 +41,7 @@ let getDataWeather = (city) => {
         if (!err) {
           body = JSON.parse(body);
           let main = body.main;
-          let temp = main.temp;
+          let temp = Number(main.temp) - 273;
           let feels_like = main.feels_like;
           let temp_max = main.temp_max;
           let temp_min = main.temp_min;
