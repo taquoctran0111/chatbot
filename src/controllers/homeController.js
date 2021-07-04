@@ -115,6 +115,10 @@ async function handlePostback(sender_psid, received_postback) {
     case "VIETNAM":
       await ncovController.handleGetDataNcovVietNam(sender_psid);
       break;
+    case "WEATHER":
+      response = {
+        text: "Nhập tên thành phố bạn muốn xem thông tin thời tiết",
+      };
     default:
       response = { text: "I don't understand!" };
       break;

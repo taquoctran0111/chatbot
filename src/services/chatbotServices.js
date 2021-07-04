@@ -81,8 +81,8 @@ let sendGetStarted = () => {
               },
               {
                 type: "postback",
-                title: "Nhiệt độ",
-                payload: "temperature",
+                title: "Thời tiết",
+                payload: "WEATHER",
               },
             ],
           },
