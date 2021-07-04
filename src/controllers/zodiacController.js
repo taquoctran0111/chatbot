@@ -7,6 +7,22 @@ const BAOBINH =
   "https://st.quantrimang.com/photos/image/2017/11/07/bao-binh-1.jpg";
 const SONGNGU =
   "https://st.quantrimang.com/photos/image/2017/11/07/song-ngu-1.jpg";
+const BACHDUONG =
+  "https://st.quantrimang.com/photos/image/2017/11/07/cung-hoang-dao-1.jpg";
+const KIMNGUU =
+  "https://st.quantrimang.com/photos/image/2017/11/07/cung-hoang-dao-6.jpg";
+const SONGTU =
+  "https://st.quantrimang.com/photos/image/2017/11/07/song-tu-1.jpg";
+const CUGIAI =
+  "https://st.quantrimang.com/photos/image/2017/11/07/cu-giai-1.jpg";
+const SUTU = "https://st.quantrimang.com/photos/image/2017/11/07/su-tu-1.jpg";
+const XUNU = "https://st.quantrimang.com/photos/image/2017/11/07/xu-nu-2.jpg";
+const THIENBINH =
+  "https://st.quantrimang.com/photos/image/2017/11/07/thien-binh-1.jpg";
+const BOCAP = "https://st.quantrimang.com/photos/image/2017/11/07/bo-cap-1.jpg";
+const NHANMA =
+  "https://st.quantrimang.com/photos/image/2017/11/07/nhan-ma-1.jpg";
+
 function callSendAPI(sender_psid, response) {
   let request_body = {
     recipient: {
@@ -54,7 +70,7 @@ let zodiacList = (sender_psid) => {
               },
               {
                 title: "Cung Bảo Bình",
-                subtitle: "Từ ngày 22/12 - 19/1",
+                subtitle: "Từ ngày 20/1 - 18/2",
                 image_url: BAOBINH,
                 buttons: [
                   {
@@ -66,7 +82,7 @@ let zodiacList = (sender_psid) => {
               },
               {
                 title: "Cung Song Ngư",
-                subtitle: "Từ ngày 22/12 - 19/1",
+                subtitle: "Từ ngày 19/2 - 20/3",
                 image_url: SONGNGU,
                 buttons: [
                   {
@@ -78,8 +94,8 @@ let zodiacList = (sender_psid) => {
               },
               {
                 title: "Cung Song Ngư",
-                subtitle: "Từ ngày 22/12 - 19/1",
-                image_url: SONGNGU,
+                subtitle: "Từ ngày 21/3 - 19/4",
+                image_url: BACHDUONG,
                 buttons: [
                   {
                     type: "postback",
@@ -90,8 +106,8 @@ let zodiacList = (sender_psid) => {
               },
               {
                 title: "Cung Song Ngư",
-                subtitle: "Từ ngày 22/12 - 19/1",
-                image_url: SONGNGU,
+                subtitle: "Từ ngày 20/4 - 20/5",
+                image_url: KIMNGUU,
                 buttons: [
                   {
                     type: "postback",
@@ -102,8 +118,8 @@ let zodiacList = (sender_psid) => {
               },
               {
                 title: "Cung Song Ngư",
-                subtitle: "Từ ngày 22/12 - 19/1",
-                image_url: SONGNGU,
+                subtitle: "Từ ngày 21/5 - 21/6",
+                image_url: SONGTU,
                 buttons: [
                   {
                     type: "postback",
@@ -124,8 +140,8 @@ let zodiacList = (sender_psid) => {
             elements: [
               {
                 title: "Cung Ma Kết",
-                subtitle: "Từ ngày 22/12 - 19/1",
-                image_url: MAKET,
+                subtitle: "Từ ngày 22/6 - 22/7",
+                image_url: CUGIAI,
                 buttons: [
                   {
                     type: "postback",
@@ -136,8 +152,8 @@ let zodiacList = (sender_psid) => {
               },
               {
                 title: "Cung Bảo Bình",
-                subtitle: "Từ ngày 22/12 - 19/1",
-                image_url: BAOBINH,
+                subtitle: "Từ ngày 23/7 - 23/8",
+                image_url: SUTU,
                 buttons: [
                   {
                     type: "postback",
@@ -148,8 +164,8 @@ let zodiacList = (sender_psid) => {
               },
               {
                 title: "Cung Song Ngư",
-                subtitle: "Từ ngày 22/12 - 19/1",
-                image_url: SONGNGU,
+                subtitle: "Từ ngày 24/8 - 22/9",
+                image_url: XUNU,
                 buttons: [
                   {
                     type: "postback",
@@ -160,8 +176,8 @@ let zodiacList = (sender_psid) => {
               },
               {
                 title: "Cung Song Ngư",
-                subtitle: "Từ ngày 22/12 - 19/1",
-                image_url: SONGNGU,
+                subtitle: "Từ ngày 23/9 - 22/10",
+                image_url: THIENBINH,
                 buttons: [
                   {
                     type: "postback",
@@ -172,8 +188,8 @@ let zodiacList = (sender_psid) => {
               },
               {
                 title: "Cung Song Ngư",
-                subtitle: "Từ ngày 22/12 - 19/1",
-                image_url: SONGNGU,
+                subtitle: "Từ ngày 23/10 - 21/11",
+                image_url: BOCAP,
                 buttons: [
                   {
                     type: "postback",
@@ -184,8 +200,8 @@ let zodiacList = (sender_psid) => {
               },
               {
                 title: "Cung Song Ngư",
-                subtitle: "Từ ngày 22/12 - 19/1",
-                image_url: SONGNGU,
+                subtitle: "Từ ngày 22/11 - 21/12",
+                image_url: NHANMA,
                 buttons: [
                   {
                     type: "postback",
