@@ -29,10 +29,12 @@ function callSendAPI(sender_psid, response) {
 }
 
 let getDataWeather = (city) => {
+  const URI = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=028e22550cd2e267e1cf9fb8415546c7`;
+  const encodedURI = encodeURI(URI);
   return new Promise((resolve, reject) => {
     request(
       {
-        uri: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=028e22550cd2e267e1cf9fb8415546c7`,
+        uri: encodedURI,
         method: "GET",
       },
       (err, res, body) => {
