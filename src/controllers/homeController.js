@@ -119,6 +119,7 @@ async function handlePostback(sender_psid, received_postback) {
       response = {
         text: "Nhập tên thành phố bạn muốn xem thông tin thời tiết",
       };
+      break;
     default:
       response = { text: "I don't understand!" };
       break;
