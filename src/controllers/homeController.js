@@ -159,7 +159,7 @@ let setPersistentMenu = async (req, res) => {
           },
           {
             type: "web_url",
-            title: "Facebook Developer",
+            title: "About me",
             url: "https://www.facebook.com/tranta0111/",
             webview_height_ratio: "full",
           },
